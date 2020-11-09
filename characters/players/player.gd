@@ -1,6 +1,8 @@
 extends Actor
+class_name Player
 
 export var stomp_impulse: = 600.0
+
 
 func _physics_process(delta: float) -> void:
 	var direction: = get_direction()
