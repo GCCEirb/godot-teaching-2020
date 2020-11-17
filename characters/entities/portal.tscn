@@ -9,23 +9,24 @@ height = 82.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade_out"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "start"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Portal" type="Area2D"]
@@ -55,4 +56,16 @@ shape = SubResource( 1 )
 autoplay = "start"
 anims/fade_out = SubResource( 2 )
 anims/start = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="." to="." method="_on_Portail_body_entered"]

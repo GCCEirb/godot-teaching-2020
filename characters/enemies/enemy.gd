@@ -24,4 +24,11 @@ func _on_StompDetector_body_entered(body: PhysicsBody2D) -> void:
 	# On désactive les collisions
 	get_node("CollisionShape2D").disabled = true
 	# On tue l'ennemi
+	die()
+
+func die() -> void:
 	queue_free()
+
+
+func _on_BulletDetector_area_entered(area: Area2D) -> void:
+	die()

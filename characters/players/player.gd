@@ -2,6 +2,12 @@ extends Actor
 class_name Player
 
 export var stomp_impulse: = 600.0
+export(String, FILE) var bullet_path: = ""
+onready var _bullet: Resource = load(bullet_path)
+
+
+func _process(delta: float) -> void:
+	manage_shoot()
 
 
 func _physics_process(delta: float) -> void:
@@ -39,3 +45,11 @@ func _on_StompDetector_area_entered(area: Area2D) -> void:
 func _on_Enemy_detector_body_entered(body: PhysicsBody2D) -> void:
 	# On tue le joueur
 	queue_free()
+
+
+func manage_shoot() -> void:
+	if Input.is_action_just_pressed("shoot"):
+		var bullet: Bullet = _bullet.instance()
+		bullet.init(Vector2(1, 0))
+		add_child(bullet)
+		bullet.global_position = position + Vector2(15, -50)
