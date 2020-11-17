@@ -19,6 +19,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 866.0 ]
 }
 stomp_impulse = 1000.0
+bullet_path = "res://characters/entities/bullet.tscn"
 
 [node name="Player" type="Sprite" parent="."]
 position = Vector2( 0, -48 )
@@ -33,6 +34,7 @@ position = Vector2( 2, -219.061 )
 current = true
 
 [node name="StompDetector" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
 position = Vector2( 0, -4 )
